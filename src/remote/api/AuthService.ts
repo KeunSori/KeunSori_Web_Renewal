@@ -2,7 +2,7 @@ import type { PostSignupRequest } from '../request/PostSignupRequest';
 import type { PostSignupResponse } from '../response/PostSignupResponse';
 import { api } from './AxiosInstance';
 
-export class AuthService {
+class AuthService {
   signup = async (signupData: PostSignupRequest): Promise<PostSignupResponse> => {
     try {
       const response = await api.post<PostSignupResponse>('/signup', signupData);
@@ -13,3 +13,5 @@ export class AuthService {
     }
   };
 }
+
+export const authService = new AuthService();

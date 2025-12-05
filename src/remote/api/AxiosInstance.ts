@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: process.env.API_URL,
+  baseURL: import.meta.env.API_URL,
   timeout: 1000,
 });

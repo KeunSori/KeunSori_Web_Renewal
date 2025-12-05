@@ -1,7 +1,7 @@
 import type { PutReservationRequest } from '../request/PutReservationRequest';
 import { api } from './AxiosInstance';
 
-export class ReservationService {
+class ReservationService {
   putReservation = async (
     reservationId: number,
     reservationData: PutReservationRequest
@@ -14,3 +14,5 @@ export class ReservationService {
     }
   };
 }
+
+export const reservationService = new ReservationService();
