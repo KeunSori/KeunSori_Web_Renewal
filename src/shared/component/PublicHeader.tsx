@@ -1,0 +1,19 @@
+import { useNavigate } from 'react-router';
+import HeaderContainer from '../style/HeaderContainer';
+
+/* 공용 헤더 컨테이너 */
+
+const PublicHeader = () => {
+  const nav = useNavigate();
+  return (
+    <HeaderContainer
+      menus={[
+        { label: '지원하기', onClick: () => nav('/apply') },
+        { label: '문의하기', onClick: () => nav('/contact') },
+        { label: '마이페이지', onClick: () => nav('/mypage') },
+      ]}
+    />
+  );
+};
+
+export default PublicHeader;
