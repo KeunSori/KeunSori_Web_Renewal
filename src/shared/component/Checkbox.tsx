@@ -15,7 +15,6 @@
 import { twMerge } from 'tailwind-merge';
 
 type CheckboxProps = {
-  label: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
   variant?: 'primary' | 'secondary' | 'disabled';
