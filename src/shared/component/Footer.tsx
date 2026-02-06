@@ -4,7 +4,7 @@ import Youtube from '../../assets/footer/youtube.svg';
 
 const Footer = () => {
   return (
-    <div className="absolute bottom-0 w-full">
+    <div className="bottom-0 w-full">
       <div className="mt-[150px] flex flex-col items-center justify-center gap-[20px]">
         <div className="text-[18px] text-[#505050]">홍익대학교 컴퓨터공학과 밴드 학회 큰소리</div>
         <div className="flex gap-2">

@@ -1,5 +1,12 @@
 import { twMerge } from 'tailwind-merge';
 
+/** 악기 박스 컴포넌트
+ *
+ * @param instrument 악기 이름
+ * @param selected 박스 선택 여부
+ *
+ */
+
 interface InstrumentBoxProps {
   instrument: string;
   selected?: boolean;

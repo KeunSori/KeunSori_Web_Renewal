@@ -1,7 +1,13 @@
 import { useNavigate } from 'react-router';
 import logoBlack from '../../assets/logo/logo-black.svg';
 
-/* 공용 헤더 스타일 컨테이너 */
+/** 공용 헤더 스타일 컨테이너
+ *
+ * @param menus 헤더에 표시할 메뉴 항목 배열
+ * @param label 메뉴 항목의 레이블 텍스트
+ * @param onClick 메뉴 항목 클릭 시 호출되는 함수
+ *
+ */
 
 interface MenuItem {
   label: string;

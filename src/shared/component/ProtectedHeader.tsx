@@ -1,7 +1,7 @@
-/* 회원 헤더 */
-
 import { useNavigate } from 'react-router';
 import HeaderContainer from '../style/HeaderContainer';
+
+/* 회원 헤더 */
 
 const ProtectedHeader = () => {
   const nav = useNavigate();
