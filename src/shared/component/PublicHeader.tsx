@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
 import HeaderContainer from '../style/HeaderContainer';
 
-/* 공용 헤더 컨테이너 */
+/* 비회원 헤더 */
 
 const PublicHeader = () => {
   const nav = useNavigate();
