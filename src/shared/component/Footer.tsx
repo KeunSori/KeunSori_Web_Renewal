@@ -6,7 +6,9 @@ const Footer = () => {
   return (
     <div className="bottom-0 w-full">
       <div className="mt-[150px] flex flex-col items-center justify-center gap-[20px]">
-        <div className="text-[18px] text-[#505050]">홍익대학교 컴퓨터공학과 밴드 학회 큰소리</div>
+        <div className="text-[18px] text-brand-gray-dark">
+          홍익대학교 컴퓨터공학과 밴드 학회 큰소리
+        </div>
         <div className="flex gap-2">
           <img
             style={imgStyle}
@@ -26,8 +28,8 @@ const Footer = () => {
             onClick={() => window.open('https://www.youtube.com/@keunsori_hongik', '_blank')}
           />
         </div>
-        <div className="flex h-[80px] w-full items-center justify-center bg-[#f0f0f0]">
-          <div className="text-[20px] text-[#505050]">
+        <div className="flex h-[80px] w-full items-center justify-center bg-surface-gray-light">
+          <div className="text-[20px] text-brand-gray-dark">
             Copyright ⓒ 2025 KEUN. All Rights Reserved
           </div>
         </div>

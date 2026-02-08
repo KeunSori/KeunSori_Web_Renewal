@@ -15,7 +15,7 @@ const FormInput = ({ placeholder, className }: FormInputProps) => {
     <input
       type="text"
       className={twMerge(
-        'h-[60px] w-[400px] rounded-[20px] bg-[#F1F1F1] px-[20px] text-[18px] placeholder:text-[#808080] focus:border-[2px] focus:border-[#ffc927] focus:bg-white focus:outline-none',
+        'h-[60px] w-[400px] rounded-xl bg-surface-gray-light px-[20px] text-[18px] placeholder:text-brand-gray focus:border-[2px] focus:border-brand-yellow focus:bg-white focus:outline-none',
         className
       )}
       placeholder={placeholder}

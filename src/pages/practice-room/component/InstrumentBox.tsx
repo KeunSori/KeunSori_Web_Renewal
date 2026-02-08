@@ -16,11 +16,16 @@ const InstrumentBox = ({ instrument, selected = false }: InstrumentBoxProps) => 
   return (
     <div
       className={twMerge(
-        `w-[60px] rounded-sm border border-black/40 py-[2px]`,
-        selected ? 'border-[#FFE493] bg-[#FFE493]' : ''
+        `w-[60px] rounded-sm border border-brand-gray-light py-[2px]`,
+        selected ? 'border-brand-yellow-light bg-brand-yellow-light' : ''
       )}
     >
-      <div className={twMerge('text-center text-sm text-black/40', selected ? 'text-black' : '')}>
+      <div
+        className={twMerge(
+          'text-center text-sm text-brand-gray-light',
+          selected ? 'text-black' : ''
+        )}
+      >
         {instrument}
       </div>
     </div>
