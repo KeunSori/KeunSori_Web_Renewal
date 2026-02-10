@@ -3,7 +3,7 @@
  *
  * @param value - 선택된 날짜
  * @param onChange - 날짜 선택 핸들러
- * @param className - 추가 스타일
+ * @param className - 추가 스타일 (가장 바깥쪽 컨테이너에 적용됨)
  *
  * [V] 스타일 적용 방식
  * [V] 스타일 코드 위치
@@ -16,12 +16,13 @@ import { twMerge } from 'tailwind-merge';
 type CalendarProps = {
   value: Date;
   onChange: (date: Date) => void;
+  disableDates: Date[];
   className?: string;
 };
 
 const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'] as const;
 
-export const Calendar = ({ value, onChange, className }: CalendarProps) => {
+export const Calendar = ({ value, onChange, disableDates, className }: CalendarProps) => {
   // 현재 보고 있는 달(헤더에 표시되는 달)
   const [viewMonth, setViewMonth] = useState(() => startOfMonth(value));
 
@@ -79,7 +80,7 @@ export const Calendar = ({ value, onChange, className }: CalendarProps) => {
 
       {/* days grid */}
       <div className="px-8 pt-3 pb-8">
-        <div className="grid grid-cols-7 text-center">
+        <div className="grid grid-cols-7 justify-items-center text-center">
           {/* blanks */}
           {Array.from({ length: days.prefixBlanks }).map((_, i) => (
             <div key={`blank-${i}`} className="h-10" />
@@ -90,6 +91,8 @@ export const Calendar = ({ value, onChange, className }: CalendarProps) => {
             const dayNum = i + 1;
             const cellDate = new Date(year, month, dayNum);
 
+            const isDisabled = disableDates.some((disableDate) => isSameDay(disableDate, cellDate));
+            console.log(cellDate, isDisabled);
             const isSelected = isSameDay(cellDate, value);
             const dayOfWeek = cellDate.getDay(); // 0 일, 6 토
             const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
@@ -99,14 +102,17 @@ export const Calendar = ({ value, onChange, className }: CalendarProps) => {
                 key={dayNum}
                 type="button"
                 onClick={() => onChange(cellDate)}
+                disabled={isDisabled}
                 className={twMerge(
                   CalendarStyle.dayBtn,
+                  isDisabled ? CalendarStyle.disabledDayBtn : CalendarStyle.activeDayHover,
                   isSelected && CalendarStyle.selectedDayBtn
                 )}
               >
                 <span
                   className={twMerge(
                     CalendarStyle.dayText,
+                    isDisabled && CalendarStyle.disabledDayText,
                     isWeekend && CalendarStyle.weekendText,
                     isSelected && CalendarStyle.selectedDayText
                   )}
@@ -147,8 +153,11 @@ const CalendarStyle = {
   navBtn: 'h-8 w-8 rounded-full text-gray-500 hover:bg-gray-100 transition-colors',
   weekday: 'py-2 text-sm font-medium text-gray-900',
   weekendText: 'text-red-500',
-  dayBtn: 'h-10 flex items-center justify-center',
+  dayBtn: 'w-10 h-10 flex items-center justify-center rounded-full',
   dayText: 'text-base text-gray-900',
+  activeDayHover: 'hover:bg-gray-100 cursor-pointer',
+  disabledDayBtn: 'cursor-not-allowed',
+  disabledDayText: 'text-gray-300',
   selectedDayBtn: 'relative',
   selectedDayText:
     'inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-[#ffe187] font-semibold text-gray-900',
