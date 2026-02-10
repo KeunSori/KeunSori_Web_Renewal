@@ -3,6 +3,7 @@
  *
  * @param value - 선택된 날짜
  * @param onChange - 날짜 선택 핸들러
+ * @param disableDates - 선택 불가능한 날짜 배열
  * @param className - 추가 스타일 (가장 바깥쪽 컨테이너에 적용됨)
  *
  * [V] 스타일 적용 방식
