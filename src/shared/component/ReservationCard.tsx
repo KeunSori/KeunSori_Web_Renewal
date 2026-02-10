@@ -8,7 +8,7 @@
  * @param dateValue - "2025년 3월 7일"
  * @param timeLabel - "시간"
  * @param timeValue - "16:00 - 17:00"
- * @param onConfirm - "예약 완료" 클릭 핸들러
+ * @param confirmState - 예약 상태 (ex. "예약 완료")
  * @param onCancel - "예약 취소" 클릭 핸들러
  * @param className - 추가 스타일
  *
@@ -31,7 +31,8 @@ type ReservationCardProps = {
   timeLabel?: string;
   timeValue: string;
 
-  onConfirm?: () => void;
+  confirmState: boolean;
+
   onCancel?: () => void;
 
   className?: string;
@@ -45,7 +46,7 @@ export const ReservationCard = ({
   dateValue,
   timeLabel = '시간',
   timeValue,
-  onConfirm,
+  confirmState,
   onCancel,
   className,
 }: ReservationCardProps) => {
@@ -54,6 +55,8 @@ export const ReservationCard = ({
   const classNameStyle = className ? className : '';
 
   const mergedStyle = twMerge(baseStyle, classNameStyle);
+
+  const confirmLabel = confirmState ? '예약 완료' : '예약 대기';
 
   return (
     <div className={mergedStyle}>
@@ -86,13 +89,14 @@ export const ReservationCard = ({
 
       {/* 하단 액션 */}
       <div className="flex items-center justify-between px-8 py-5">
-        <button
-          type="button"
-          className={twMerge(ActionStyle.base, ActionStyle.confirm)}
-          onClick={onConfirm}
+        <div
+          className={twMerge(
+            ConfirmStateStyle.base,
+            confirmState ? ConfirmStateStyle.confirm : ConfirmStateStyle.pending
+          )}
         >
-          예약 완료
-        </button>
+          {confirmLabel}
+        </div>
 
         <button
           type="button"
@@ -118,4 +122,11 @@ const ActionStyle = {
   base: 'text-md font-semibold transition-colors',
   confirm: 'text-green-500 hover:text-green-600',
   cancel: 'text-gray-300 hover:text-gray-400',
+};
+
+// 하단 스타일
+const ConfirmStateStyle = {
+  base: 'text-md font-semibold cursor-default',
+  confirm: 'text-green-500',
+  pending: 'text-gray-300',
 };
