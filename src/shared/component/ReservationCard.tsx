@@ -119,7 +119,7 @@ const TextStyle = {
 
 // 하단 액션 스타일
 const ActionStyle = {
-  base: 'text-md font-semibold transition-colors',
+  base: 'text-md font-semibold transition-colors cursor-pointer',
   confirm: 'text-green-500 hover:text-green-600',
   cancel: 'text-gray-300 hover:text-gray-400',
 };
