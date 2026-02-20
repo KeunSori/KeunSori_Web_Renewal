@@ -19,7 +19,7 @@ const HeaderContainer = ({ menus }: HeaderContainerProps) => {
   const nav = useNavigate();
   return (
     <div className="flex">
-      <div className="absolute w-full">
+      <div className="fixed top-0 z-1 w-full">
         <div className="flex h-[70px] w-full flex-row justify-between bg-white px-[150px]">
           <img src={logoBlack} onClick={() => nav('/')} className="size-16" alt="큰소리 로고" />
           <ul className="flex flex-row items-center gap-[30px]">
